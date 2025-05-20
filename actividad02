@@ -1,0 +1,56 @@
+#include <iostream>
+#define PI 3.14159265
+
+using namespace std;
+
+// Clase Triangulo
+class Triangulo {
+private:
+    double base;
+    double altura;
+
+public:
+    // Constructor
+    Triangulo(double b, double h) {
+        base = b;
+        altura = h;
+    }
+
+    // Método para mostrar datos
+    void mostrarDatos() {
+        cout << "Triángulo:" << endl;
+        cout << "Base: " << base << endl;
+        cout << "Altura: " << altura << endl;
+    }
+};
+
+// Clase Circulo
+class Circulo {
+private:
+    double radio;
+
+public:
+    // Constructor
+    Circulo(double r) {
+        radio = r;
+    }
+
+    // Método para mostrar datos
+    void mostrarDatos() {
+        cout << "Círculo:" << endl;
+        cout << "Radio: " << radio << endl;
+        cout << "Valor de PI: " << PI << endl;
+    }
+};
+
+// Función principal
+int main() {
+    Triangulo t(9.0, 8.0);
+    Circulo c(4.0);
+
+    t.mostrarDatos();
+    cout << endl;
+    c.mostrarDatos();
+
+    return 0;
+}
