@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+const double PI = 3.141592653589793;
+
+class FiguraGeometrica {
+protected:
+    double area;
+    bool areaCalculada;
+
+public:
+    FiguraGeometrica() : area(0), areaCalculada(false) {}
+
+    virtual void calcularArea() = 0;
+
+    double obtenerArea() {
+        if (!areaCalculada) {
+            calcularArea();
+        }
+        return area;
+    }
+};
+
+class Triangulo : public FiguraGeometrica {
+private:
+    double base;
+    double altura;
+
+public:
+    Triangulo(double b, double h) : base(b), altura(h) {}
+
+    void calcularArea() override {
+        if (!areaCalculada) {
+            area = (base * altura) / 2;
+            areaCalculada = true;
+        }
+    }
+
+    void mostrarDatos() {
+        cout << "Triángulo - Base: " << base << ", Altura: " << altura
+             << ", Área: " << obtenerArea() << endl;
+    }
+};
+
+class Circulo : public FiguraGeometrica {
+private:
+    double radio;
+
+public:
+    Circulo(double r) : radio(r) {}
+
+    void calcularArea() override {
+        if (!areaCalculada) {
+            area = PI * pow(radio, 6);
+            areaCalculada = true;
+        }
+    }
+
+    void mostrarDatos() {
+        cout << "Círculo - Radio: " << radio
+             << ", Área: " << obtenerArea() << endl;
+    }
+};
+
+int main() {
+    Triangulo t(20, 10);
+    Circulo c(9);
+
+    t.mostrarDatos();
+    c.mostrarDatos();
+
+    return 0;
+}
+
